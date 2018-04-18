@@ -20,20 +20,12 @@ html
 					a.navbar-brand(href='/') Cars
 				#navbar.collapse.navbar-collapse
 					ul.nav.navbar-nav.navbar-right
-						li
+						//li
 							a(href='/') Home
 						if user
 							li
-								a(href='/users/'+user._id) #{user.name}
-						else
-							li.dropdown
-								a(href="/signup") Sign-up
+								a(href='/') #{user.uname}
 							li
-								a(href='/signin') Sign-in
-						li
-							a(href='/contactus') Contact us
-						if user
-							li
-								a(href='/logout') Logout
+								a(href='/') Logout
 		
 		block content
