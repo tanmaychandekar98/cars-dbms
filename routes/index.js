@@ -206,7 +206,7 @@ router.post('/signup' ,function(req,res){
 //Login request route
 router.post('/login' ,function(req,res){
 	if(req.body.uname=="admin" && req.body.pwd=="rootuser"){  //admin page condition
-		res.render('admin');
+		res.render('admin',{user:{"uname":"Admin"}});
 	}else{
 		var uq = "SELECT * from users where uname='"+req.body.uname+"' LIMIT 1";
 		con.connect(function(err1){

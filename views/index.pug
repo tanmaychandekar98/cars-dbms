@@ -7,12 +7,15 @@ block content
 			.col-sm-6
 				h3 Sign-up
 				form.form-horizontal.needs-validation(method="POST" action="/signup")
-					.form-group
-						input.form-control(name="username" ,type="text",placeholder="Username" required)
-					.form-group
-						input.form-control(name="password" ,type="password",placeholder="Password" required)
-					.form-group
-						input.form-control(name="cpassword" ,type="password",placeholder="Confirm Password" required)
+					.row
+						.form-group.col-sm-6
+							input.form-control(name="username" ,type="text",placeholder="Username" required)
+					.row
+						.form-group.col-sm-6
+							input.form-control(name="password" ,type="password",placeholder="Password" required)
+					.row
+						.form-group.col-sm-6
+							input.form-control(name="cpassword" ,type="password",placeholder="Confirm Password" required)
 
 
 					hr
