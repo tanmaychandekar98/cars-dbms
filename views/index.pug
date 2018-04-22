@@ -3,37 +3,20 @@ extends layout
 block content
 	#home
 		h1=title
-			hr
-			.col-sm-6
-				h3 Sign-up
-				form.form-horizontal.needs-validation(method="POST" action="/signup")
-					.row
-						.form-group.col-sm-6
-							input.form-control(name="username" ,type="text",placeholder="Username" required)
-					.row
-						.form-group.col-sm-6
-							input.form-control(name="password" ,type="password",placeholder="Password" required)
-					.row
-						.form-group.col-sm-6
-							input.form-control(name="cpassword" ,type="password",placeholder="Confirm Password" required)
-
-
-					hr
-					br
-
-					input.btn.btn-success(type="submit" value="Sign-up")
-			.col-sm-6
-				h3 Login
-				form.form-horizontal.needs-validation(method="POST" action="/login")
-					.form-group
+		.col-sm-10.col-sm-offset-3
+			h3 Login
+			form.form-horizontal.needs-validation(method="POST" action="/login")
+				.row
+					.form-group.col-sm-4
 						input.form-control(name="uname" ,type="text" ,placeholder="Username" required)
-					.form-group
+				.row
+					.form-group.col-sm-4
 						input.form-control(name="pwd" ,type="password",placeholder="Password" required)
 
-					hr
-					br
+				hr
 
-					input.btn.btn-success(type="submit" value="Login")
-			hr
+				input.btn.btn-success(type="submit" value="Login")
+			a.btn.btn-primary(href='/signup' ) Create an account
+		hr
 
 

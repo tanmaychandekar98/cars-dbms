@@ -20,6 +20,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Cars' });
 });
 
+router.get('/signup', function(req, res, next) {
+  res.render('signup', { title: 'Sign Up' });
+});
+
+
 
 router.get('/carSearch', function(req,res){
 	var uq = "SELECT * from cars";
