@@ -4,11 +4,27 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+
+//Mysql database setup
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "cars"
+});
+
+con.connect(function(err){
+	if(err) throw err;
+	console.log('Connected to MySQL server');
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
