@@ -25,7 +25,14 @@ con.query("SELECT * FROM cars",function(err,res){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Cars' });
+  res.render('index', { title: 'Cars' , v:1});
+});
+
+router.get('/UpdateCar/:mno', function(req, res, next) {
+	con.query("SELECT * FROM cars where mno='"+req.params.mno+"'", function(err,car){
+		if(err) res.send(err);
+  		res.render('UpdateCar', { title: 'Update Car' , car:car[0]});
+	});
 });
 
 router.get('/cars/:uname' ,function(req,res){
@@ -33,7 +40,7 @@ router.get('/cars/:uname' ,function(req,res){
 });
 
 router.get('/signup', function(req, res, next) {
-  res.render('signup', { title: 'Sign Up' });
+  res.render('signup', { title: 'Sign Up' , v:1});
 });
 
 router.get('/AddCar', function(req, res, next) {

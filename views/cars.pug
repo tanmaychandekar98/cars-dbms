@@ -58,7 +58,7 @@ block content
 				.col-sm-6
 					h2 #{car.name}
 					h3 #{car.mno}
-					h4 Rs.#{car.price}
+					h4 Rs. #{car.price}
 				.col-sm-3
 					form.middle(method="POST" action="/"+user.uname+"/"+car.mno+"/addToFavs")
 						input.btn.btn-success(type="submit" value="Add to favourites")

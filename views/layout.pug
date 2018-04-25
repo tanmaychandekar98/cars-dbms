@@ -22,9 +22,7 @@ html
 					ul.nav.navbar-nav.navbar-right
 						//li
 							a(href='/') Home
-						if user
-							li
-								a #{user.uname}
+						if !v
 							li
 								a(href='/') Logout
 		
