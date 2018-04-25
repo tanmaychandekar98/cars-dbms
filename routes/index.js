@@ -36,7 +36,10 @@ router.get('/AddCar', function(req, res, next) {
   res.render('AddCar', { title: 'Add a car to database' });
 });
 
-
+//Get admin home page
+router.get('/adminHome', function(req,res){
+	res.render('admin',{user:{"uname":"Admin"}});
+});
 
 router.get('/carSearch', function(req,res){
 	var uq = "SELECT * from cars";
@@ -87,6 +90,17 @@ router.post('/:uname/carSearch' , function(req,res){
 
 //Admin controls
 
+//View by mno.
+router.post('/viewCar',function(req,res){
+	var mno = req.body.mno;
+	var q = "SELECT * from cars where mno=?";
+	con.query(q,[mno],function(err,car){
+		if(err){res.send(err);}
+		console.log(car);
+		res.render('admin',{user:{"uname":"Admin"},cars:car});
+	});
+});
+
 //Insert car into the db
 router.post('/addCar',function(req,res){
 	var mno = req.body.mno;
@@ -107,12 +121,12 @@ router.post('/addCar',function(req,res){
 });
 
 //Delete car from database
-router.delete('/delCar/:mno', function(req,res){
+router.post('/delCar/:mno', function(req,res){
 	var cq ="DELETE FROM cars WHERE mno='"+req.params.mno+"'";
 	con.query(cq , function(err,result){
 		if(err) throw err;
 		console.log(result.affectedRows+" row deleted");
-		res.redirect('back');
+		res.render('admin',{user:{"uname":"Admin"}});
 	});
 });
 

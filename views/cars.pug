@@ -2,7 +2,7 @@ extends layout
 
 block content
 	h1 Enter your choices		
-	form.form-horizontal.needs-validation(method="POST" action="/:uname/carSearch")
+	form.form-horizontal.needs-validation(method="POST" action="/"+user.uname+"/carSearch")
 		.form-group.col-sm-4
 			label Model no. :
 			input.form-control(name="mno" ,type="text", placeholder="Model no.")
@@ -50,4 +50,6 @@ block content
 
 	if cars
 		h1 Search result
-		h3 #{cars[0].name}
+		each car in cars
+			h3 #{car.name}
+			hr
