@@ -1,6 +1,53 @@
 extends layout
 
 block content
+	h1 Enter your choices		
+	form.form-horizontal.needs-validation(method="POST" action="/:uname/carSearch")
+		.form-group.col-sm-4
+			label Model no. :
+			input.form-control(name="mno" ,type="text", placeholder="Model no.")
+		.row
+		.form-group.col-sm-4
+			label Car name :
+			input.form-control(name="cname" ,type="text", placeholder="Car name")
+		.row
+		.form-group.col-sm-4
+			label Car color :
+			input.form-control(name="color" ,type="text", placeholder="Color")
+		.row
+		.form-group.col-sm-4
+			label Engine capacity from :
+			input.form-control(name="engcap1" ,type="text", value='0')
+		.form-group.col-sm-4
+			label To:
+			input.form-control(name="engcap2" ,type="text", value='50000')
+		.row
+		.form-group.col-sm-4
+			label Mileage from :
+			input.form-control(name="mil1" ,type="text", value='0')
+		.form-group.col-sm-4
+			label To :
+			input.form-control(name="mil2" ,type="text", value='150')
+		.row
+		.form-group.col-sm-4
+			label Maximum speed from :
+			input.form-control(name="maxsp1" ,type="text", value='0')
+		.form-group.col-sm-4
+			label To :
+			input.form-control(name="maxsp2" ,type="text", value='2000')
+		.row
+		.form-group.col-sm-4
+			label Price from :
+			input.form-control(name="price1" ,type="text", value='0')
+		.form-group.col-sm-4
+			label To :
+			input.form-control(name="price2" ,type="text", value='400000000')
+		.row
+		br
+		input.btn.btn-success(type="submit" value="Submit")
+	br
+	br
+
 	if cars
 		h1 Search result 
 		h3 #{cars[0].name}

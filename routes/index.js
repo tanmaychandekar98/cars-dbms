@@ -9,7 +9,7 @@ var fs = require('fs');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "jaiho",
+  password: "root",
   database: "cars"
 });
 
