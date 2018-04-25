@@ -35,9 +35,10 @@ router.get('/UpdateCar/:mno', function(req, res, next) {
 	});
 });
 
-router.get('/cars/:uname' ,function(req,res){
-
-});
+/*router.get('/cars/:uname' ,function(req,res){
+	var q = "SELECT * FROM cars c,favs f, users u where favs.uname='"+req.params.uname+"' and f.mno=c.mno";
+	con.query(q, function(err,cars){});
+});*/
 
 router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Sign Up' , v:1});
