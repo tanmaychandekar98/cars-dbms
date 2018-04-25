@@ -3,14 +3,14 @@ extends layout
 block content
 	#home
 		h1=title
-		.col-sm-10.col-sm-offset-3
+		.col-sm-10.col-sm-offset-4
 			h3 Login
 			form.form-horizontal.needs-validation(method="POST" action="/login")
 				.row
-					.form-group.col-sm-4
+					.form-group.col-sm-4.col-sm-offset-1
 						input.form-control(name="uname" ,type="text" ,placeholder="Username" required)
 				.row
-					.form-group.col-sm-4
+					.form-group.col-sm-4.col-sm-offset-1
 						input.form-control(name="pwd" ,type="password",placeholder="Password" required)
 				input.btn.btn-success(type="submit" value="Login")
 			hr

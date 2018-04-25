@@ -2,7 +2,7 @@ extends layout
 
 block content
 	h3 Car Search to update or delete a car from database
-	form.form-horizontal.needs-validation(method="POST" action="/signup")
+	form.form-horizontal.needs-validation(method="POST" action="")
 		.form-group.col-sm-6
 						input.form-control(name="mno" ,type="text",placeholder="Enter model no. to search" required)
 		.row
@@ -10,3 +10,10 @@ block content
 		.row
 	br
 	a.btn.btn-primary(href='/AddCar' ) Insert a car
+	br 
+	br
+	h1 Search result 
+	h3 Name :
+	h3 Color :
+	h3 Price :
+
