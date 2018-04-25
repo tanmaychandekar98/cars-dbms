@@ -2,7 +2,12 @@ extends layout
 
 block content
 	- var f=1;
-	h1 Enter your choices		
+	hr
+	h1
+		.col-sm-12
+			a.btn.btn-primary.right(href='/SeeFavorites') See your favorite cars
+		br
+	h2 Enter your choices		
 	form.form-horizontal.needs-validation(method="POST" action="/"+user.uname+"/carSearch")
 		.form-group.col-sm-4
 			label Model no. :

@@ -43,6 +43,10 @@ router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Sign Up' , v:1});
 });
 
+router.get('/SeeFavorites', function(req, res, next) {
+  res.render('SeeFavorites', { title: 'Your favorites' });
+});
+
 router.get('/AddCar', function(req, res, next) {
   res.render('AddCar', { title: 'Add a car to database' });
 });
