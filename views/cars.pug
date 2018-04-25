@@ -5,7 +5,7 @@ block content
 	hr
 	h1
 		.col-sm-12
-			a.btn.btn-primary.right(href='/SeeFavorites') See your favorite cars
+			a.btn.btn-primary.right(href='/cars/'+user.uname) See your favorite cars
 		br
 	h2 Enter your choices		
 	form.form-horizontal.needs-validation(method="POST" action="/"+user.uname+"/carSearch")

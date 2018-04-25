@@ -1,4 +1,7 @@
 extends layout
 
 block content
-	
+	if cars
+		each car in cars
+			h2 #{car.name}
+			hr

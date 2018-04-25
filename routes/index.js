@@ -35,10 +35,14 @@ router.get('/UpdateCar/:mno', function(req, res, next) {
 	});
 });
 
-/*router.get('/cars/:uname' ,function(req,res){
-	var q = "SELECT * FROM cars c,favs f, users u where favs.uname='"+req.params.uname+"' and f.mno=c.mno";
-	con.query(q, function(err,cars){});
-});*/
+router.get('/cars/:uname' ,function(req,res){
+	var q = "SELECT * from cars where mno in (SELECT mno from favs where uname=?)"
+	//var q = "SELECT * FROM cars c,favs f, users where f.uname=? and f.mno=c.mno group by f.uname";
+	con.query(q,[req.params.uname], function(err,cars){
+		if(err) res.send(err);
+		res.render('SeeFavorites', { title: 'Your favorites' ,cars:cars});
+	});
+});
 
 router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Sign Up' , v:1});
