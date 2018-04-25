@@ -1,4 +1,12 @@
 extends layout
 
 block content
-	h3 sd
+	h3 Car Search to update or delete a car from database
+	form.form-horizontal.needs-validation(method="POST" action="/signup")
+		.form-group.col-sm-6
+						input.form-control(name="mno" ,type="text",placeholder="Enter model no. to search" required)
+		.row
+		input.btn.btn-success(type="submit" value="Search")
+		.row
+	br
+	a.btn.btn-primary(href='/AddCar' ) Insert a car

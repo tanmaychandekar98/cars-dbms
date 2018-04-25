@@ -25,6 +25,10 @@ router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Sign Up' });
 });
 
+router.get('/AddCar', function(req, res, next) {
+  res.render('AddCar', { title: 'Add a car to database' });
+});
+
 
 
 router.get('/carSearch', function(req,res){

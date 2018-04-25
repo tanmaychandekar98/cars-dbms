@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	#addCar
+		h1=title
+		hr
+		.col-sm-8
+			form.form-horizontal.needs-validation(method="POST" action="/addCar")
+				input.form-control(name="mno" ,type="text",placeholder="Model no." required)
+				.row
+				input.form-control(name="cname" ,type="text",placeholder="Name of car" required)
+				.row
+				input.form-control(name="color" ,type="text",placeholder="Color of car" required)
+				.row
+				input.form-control(name="engcap" ,type="text",placeholder="Engine capacity" required)
+				.row
+				input.form-control(name="mil" ,type="text",placeholder="Mileage" required)
+				.row
+				input.form-control(name="maxsp" ,type="text",placeholder="Maximum speed" required)
+				.row
+				input.form-control(name="price" ,type="text",placeholder="Price" required)
+				.row
+				input.form-control(name="imgpath" ,type="text",placeholder="Image folder path" required)
+				hr
+				br
+				input.btn.btn-success(type="submit" value="Submit")
