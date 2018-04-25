@@ -11,3 +11,19 @@ a {
 #head {
 	
 }
+
+img {
+	height: 100%;
+	width: 100%;
+}
+
+.card {
+	height: 200px;
+	border:2px solid black;
+}
+
+.middle {
+	position: absolute;
+	top: 50%;
+	bottom: 50%;
+}

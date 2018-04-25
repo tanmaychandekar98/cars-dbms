@@ -28,6 +28,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Cars' });
 });
 
+router.get('/cars/:uname' ,function(req,res){
+
+});
+
 router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Sign Up' });
 });
@@ -162,7 +166,7 @@ router.post('/:uname/:mno/addToFavs' , function(req,res){
 			con.query(addQ ,function(err , result){
 				if(err) throw err;
 				console.log(models[0].mno+" added to "+users[0].uname);
-				res.redirect('back');
+				res.send("Added to favs");
 			});
 		});
 	});

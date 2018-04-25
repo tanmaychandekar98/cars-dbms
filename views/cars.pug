@@ -50,6 +50,17 @@ block content
 
 	if cars
 		h1 Search result
+		h5 Showing #{cars.length} results
 		each car in cars
-			h3 #{car.name}
+			.card
+				.col-sm-3
+					img(src=car.imgpath)
+				.col-sm-6
+					h2 #{car.name}
+					h3 #{car.mno}
+					h4 Rs.#{car.price}
+				.col-sm-3
+					form.middle(method="POST" action="/"+user.uname+"/"+car.mno+"/addToFavs")
+						input.btn.btn-success(type="submit" value="Add to favourites")
 			hr
+
