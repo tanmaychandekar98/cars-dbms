@@ -177,8 +177,12 @@ router.post('/login' ,function(req,res){
 			if(err) res.send(err.sqlMessage);
 			else if(result.length==0)   //if username is not present
 				res.send("No user found");
-			else if(result[0].password == req.body.pwd){  //success login
-				res.render('cars',{user:result[0]});
+			else if(result[0].password == req.body.pwd){
+				con.query("SELECT * from cars",function(err,cars){
+					if(err){res.send(err);}
+					res.render('cars',{user:result[0],cars:cars});
+					
+				});
 			}
 			else{
 				res.send("Incorrect password"); //if passwords don't match
