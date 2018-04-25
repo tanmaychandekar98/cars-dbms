@@ -85,7 +85,11 @@ router.post('/:uname/carSearch' , function(req,res){
 		if(err) throw err;
 		con.query(searchQ , [engcap1,engcap2,mil1,mil2,maxsp1,maxsp2,price1,price2] , function(err,result){
 			if (err) throw err;
-			res.render('cars',{cars:result,user:users[0]});
+			var favQ = "SELECT * from favs where uname='"+users[0].uname+"'";
+			con.query(favQ ,function(err, favs){
+				if(err) {res.send(err);}
+				res.render('cars',{cars:result,user:users[0],favs:favs});
+			});
 		});
 	});
 });
@@ -174,11 +178,12 @@ router.post('/:uname/:mno/addToFavs' , function(req,res){
 
 
 //Delete from favs
-router.delete('/:uname/:mno/delFromFavs' , function(req,res){
+router.post('/:uname/:mno/delFromFavs' , function(req,res){
 	var q = "DELETE FROM favs WHERE uname='"+req.params.uname+"' AND mno='"+req.params.mno+"'";
 	con.query(q , function (err,result){
 		if(err) throw err;
 		console.log(result.affectedRows+" row deleted");
+		res.send("Deleted from favs :"+req.params.mno);
 	});
 });
  
