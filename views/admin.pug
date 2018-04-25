@@ -27,5 +27,9 @@ block content
 				.col-sm-3
 					form(method="POST" action="/delCar/"+car.mno)
 						input.btn.btn-danger(type="submit" value="Delete car")
+				hr
+				.col-sm-3
+					a.btn.btn-primary(href="/UpdateCar/"+car.mno) Update
+
 					
 

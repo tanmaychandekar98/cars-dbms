@@ -1,0 +1,33 @@
+extends layout
+
+block content
+	#UpdateCar
+		h1 Update car
+		.col-sm-8
+			form.form-horizontal.needs-validation(method="POST" action="/updCar/"+car.mno)
+				label Model no. :
+				input.form-control(name="Umno" ,type="text",value=car.mno)
+				.row
+				label Car name :
+				input.form-control(name="Ucname" ,type="text",value=car.name)
+				.row
+				label Color :
+				input.form-control(name="Ucolor" ,type="text",value=car.color)
+				.row
+				label Engine capacity :
+				input.form-control(name="Uengcap" ,type="text",value=car.engcap)
+				.row
+				label Mileage :
+				input.form-control(name="Umil" ,type="text",value=car.mileage)
+				.row
+				label Maximum Speed :
+				input.form-control(name="Umaxsp" ,type="text",value=car.maxsp)
+				.row
+				label Price :
+				input.form-control(name="Uprice" ,type="text",value=car.price)
+				.row
+				label Image path :
+				input.form-control(name="Uimgpath" ,type="text",value=car.imgpath)
+				hr
+				br
+				input.btn.btn-success(type="submit" value="Submit")
