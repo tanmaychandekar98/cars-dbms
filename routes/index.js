@@ -13,6 +13,13 @@ var con = mysql.createConnection({
   database: "cars"
 });
 
+//Var to store all cars
+var allcars;
+con.query("SELECT * FROM cars",function(err,res){
+	if(err){res.send(err);}
+	allcars = res;
+});
+
 
 //GET Requests
 
@@ -47,6 +54,7 @@ router.get('/carSearch', function(req,res){
 // Renders the cars page
 // No field must be empty
 router.post('/:uname/carSearch' , function(req,res){
+	var s1='',s2='',s3='';
 	var mno = req.body.mno+'%';
 	var cname = req.body.cname+'%';
 	var color = req.body.color;
@@ -58,11 +66,17 @@ router.post('/:uname/carSearch' , function(req,res){
 	var maxsp2 = req.body.maxsp2;
 	var price1 = req.body.price1;
 	var price2 = req.body.price2;
-	var searchQ = "SELECT * FROM cars WHERE mno LIKE ? AND name LIKE ? AND color=? AND engcap BETWEEN ? AND ? AND mileage BETWEEN ? AND ? AND maxsp BETWEEN ? AND ? AND price BETWEEN ? AND ? ORDER BY name";
+	if(mno!='')
+		s1="mno LIKE '"+mno+"' AND";
+	if(cname!='')
+		s2="name LIKE '"+cname+"' AND";
+	if(color!='')
+		s2="color='"+color+"' AND";
+	var searchQ = "SELECT * FROM cars WHERE "+s1+" "+s2+" "+s3+" engcap BETWEEN ? AND ? AND mileage BETWEEN ? AND ? AND maxsp BETWEEN ? AND ? AND price BETWEEN ? AND ? ORDER BY name";
 	var uq = "SELECT * from users where uname='"+req.params.uname+"' LIMIT 1";
 	con.query(uq , function(err,users){
 		if(err) throw err;
-		con.query(searchQ , [mno,cname,color,engcap1,engcap2,mil1,mil2,maxsp1,maxsp2,price1,price2] , function(err,result){
+		con.query(searchQ , [engcap1,engcap2,mil1,mil2,maxsp1,maxsp2,price1,price2] , function(err,result){
 			if (err) throw err;
 			res.render('cars',{cars:result,user:users[0]});
 		});
