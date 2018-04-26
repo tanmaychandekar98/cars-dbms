@@ -1,61 +1,62 @@
 extends layout
 
 block content
-	
+	br
+	.row
+		.col-sm-10
+			h2 Enter your choices
+		.col-sm-2
+			a.btn.btn-primary(href='/cars/'+user.uname) See your favorite cars
 	hr
-	h1
-		.col-sm-12
-			a.btn.btn-primary.right(href='/cars/'+user.uname) See your favorite cars
-		br
-	h2 Enter your choices
-	form.form-horizontal.needs-validation(method="POST" action="/"+user.uname+"/carSearch")
-		.row
-			.form-group.col-sm-3
-				label Model no. :
-				input.form-control(name="mno" ,type="text", placeholder="Model no.")
-			.form-group.col-sm-3
-				label Car name :
-				input.form-control(name="cname" ,type="text", placeholder="Car name")
-			.form-group.col-sm-3
-				label Car color :
-				input.form-control(name="color" ,type="text", placeholder="Color")
-		.row
-			.form-group.col-sm-3
-				label Engine capacity from :
-				input.form-control(name="engcap1" ,type="text", value='0')
-			.form-group.col-sm-3
-				label To:
-				input.form-control(name="engcap2" ,type="text", value='50000')
-		.row
-			.form-group.col-sm-3
-				label Mileage from :
-				input.form-control(name="mil1" ,type="text", value='0')
-			.form-group.col-sm-3
-				label To :
-				input.form-control(name="mil2" ,type="text", value='150')
-		.row
-			.form-group.col-sm-3.col-sm-offset-1
-				label Maximum speed from :
-				input.form-control(name="maxsp1" ,type="text", value='0')
-			.form-group.col-sm-3
-				label To :
-				input.form-control(name="maxsp2" ,type="text", value='2000')
-		.row
-			.form-group.col-sm-3
-				label Price from :
-				input.form-control(name="price1" ,type="text", value='0')
-			.form-group.col-sm-3
-				label To :
-				input.form-control(name="price2" ,type="text", value='300000000')
-		.row
-		br
-		input.btn.btn-success(type="submit" value="Submit")
+	.row
+		form.form-horizontal.needs-validation.col-sm-12.col-sm-offset-1(method="POST" action="/"+user.uname+"/carSearch")
+			.row
+				.form-group.col-sm-3
+					label Model no. :
+					input.form-control(name="mno" ,type="text", placeholder="Model no.")
+				.form-group.col-sm-3
+					label Car name :
+					input.form-control(name="cname" ,type="text", placeholder="Car name")
+				.form-group.col-sm-3
+					label Car color :
+					input.form-control(name="color" ,type="text", placeholder="Color")
+			.row
+				.form-group.col-sm-3
+					label Engine capacity from :
+					input.form-control(name="engcap1" ,type="text", value='0')
+				.form-group.col-sm-3
+					label To:
+					input.form-control(name="engcap2" ,type="text", value='50000')
+			.row
+				.form-group.col-sm-3
+					label Mileage from :
+					input.form-control(name="mil1" ,type="text", value='0')
+				.form-group.col-sm-3
+					label To :
+					input.form-control(name="mil2" ,type="text", value='150')
+			.row
+				.form-group.col-sm-3.col-sm-offset-1
+					label Maximum speed from :
+					input.form-control(name="maxsp1" ,type="text", value='0')
+				.form-group.col-sm-3
+					label To :
+					input.form-control(name="maxsp2" ,type="text", value='2000')
+			.row
+				.form-group.col-sm-3
+					label Price from :
+					input.form-control(name="price1" ,type="text", value='0')
+				.form-group.col-sm-3
+					label To :
+					input.form-control(name="price2" ,type="text", value='300000000')
+			.row
+			br
+			input.btn.btn-success(type="submit" value="Submit")
 	br
-	br
-
+	hr
 	if cars
 		h1 Search result
 		h5 Showing #{cars.length} results
+		hr
 		each car in cars
 			- var f=1;
 			.card

@@ -19,12 +19,12 @@ img {
 .card {
 	height: 200px;
 	border:2px solid black;
+	box-shadow:  5px 5px 5px 5px rgba(0,0,0,0.75);
 }
 
 .middle {
-	position: absolute;
-	top: 50%;
-	bottom: 50%;
+	position: relative;
+	top: 6em;
 }
 
 .form-group{

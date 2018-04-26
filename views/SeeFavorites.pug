@@ -1,8 +1,11 @@
 extends layout
 
 block content
-	if cars
+	br
+	a.btn.btn-default.col-sm-offset-11(href='/carSearch/'+user.uname) Go Back
+	if cars.length
 		each car in cars
+			hr
 			.card
 				.col-sm-3
 					img(src=car.imgpath)
@@ -14,3 +17,5 @@ block content
 				.col-sm-3
 					form.middle(method="POST" action="/"+user.uname+"/"+car.mno+"/delFromSeeFavs")
 								input.btn.btn-warning(type="submit" value="Delete from favourites")
+	else
+		h1 Empty favourites list !
