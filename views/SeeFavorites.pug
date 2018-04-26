@@ -3,5 +3,11 @@ extends layout
 block content
 	if cars
 		each car in cars
-			h2 #{car.name}
-			hr
+			.card
+				.col-sm-3
+					img(src=car.imgpath)
+				.col-sm-6
+					h2 #{car.name}
+					h2 Model no. : #{car.mno}
+					h2 Rs. #{car.price}
+					br
