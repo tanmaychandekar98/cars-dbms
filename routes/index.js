@@ -16,7 +16,7 @@ var con = mysql.createConnection({
 //Var to store all cars
 var allcars;
 con.query("SELECT * FROM cars",function(err,res){
-	if(err){res.send(err);}
+	//if(err){res.send(err);}
 	allcars = res;
 });
 
@@ -48,10 +48,6 @@ router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Sign Up' , v:1});
 });
 
-router.get('/SeeFavorites', function(req, res, next) {
-  res.render('SeeFavorites', { title: 'Your favorites' });
-});
-
 router.get('/AddCar', function(req, res, next) {
   res.render('AddCar', { title: 'Add a car to database' });
 });
@@ -61,10 +57,19 @@ router.get('/adminHome', function(req,res){
 	res.render('admin',{user:{"uname":"Admin"}});
 });
 
-router.get('/carSearch', function(req,res){
-	var uq = "SELECT * from cars";
-	con.query(uq , function(err , result){
-		res.render('cars',{cars:result});
+router.get('/carSearch/:uname', function(req,res){
+	var cq = "SELECT * from cars";
+	var uq = "SELECT * from users where uname='"+req.params.uname+"'";
+	con.query(uq , function(err , users){
+		if(err){res.send(err);}
+		con.query(cq ,function(err,cars){
+			if(err){res.send(err);}
+			var fq = "SELECT * from favs where uname='"+users[0].uname+"'";
+			con.query(fq ,function(err, favs){
+				if(err) res.send(err);
+				res.render('cars',{cars:cars,user:users[0],favs:favs});
+			});
+		});
 	});
 });
 
@@ -177,7 +182,7 @@ router.post('/updCar/:mno' ,function(req,res){
 //uname and mno described in url
 router.post('/:uname/:mno/addToFavs' , function(req,res){
 	var uq = "SELECT uname from users where uname='"+req.params.uname+"'";
-	var cq = "SELECT mno from cars where mno='"+req.params.mno+"'";
+	var cq = "SELECT * from cars where mno='"+req.params.mno+"'";
 	con.query(uq , function(err,users){
 		if(err) throw err;
 		con.query(cq , function(err,models){
@@ -186,7 +191,7 @@ router.post('/:uname/:mno/addToFavs' , function(req,res){
 			con.query(addQ ,function(err , result){
 				if(err) throw err;
 				console.log(models[0].mno+" added to "+users[0].uname);
-				res.send("Added to favs");
+				res.send("<h2>Added to favourites : "+models[0].name+"<hr><a href='/carSearch/"+users[0].uname+"'>Go back</a></h2>");
 			});
 		});
 	});
@@ -199,7 +204,8 @@ router.post('/:uname/:mno/delFromFavs' , function(req,res){
 	con.query(q , function (err,result){
 		if(err) throw err;
 		console.log(result.affectedRows+" row deleted");
-		res.send("Deleted from favs :"+req.params.mno);
+		//res.send("Deleted from favs :"+req.params.mno);
+		res.send("<h2>DELETED from favourites : Model no. "+req.params.mno+"<hr><a href='/carSearch/"+req.params.uname+"'>Go back</a></h2>");
 	});
 });
  
@@ -233,7 +239,12 @@ router.post('/login' ,function(req,res){
 			else if(result[0].password == req.body.pwd){
 				con.query("SELECT * from cars",function(err,cars){
 					if(err){res.send(err);}
-					res.render('cars',{user:result[0],cars:cars});
+					var fq = "SELECT * from favs where uname='"+result[0].uname+"'";
+					con.query(fq ,function(err, favs){
+						if(err) res.send(err);
+						//res.render('cars',{user:result[0],cars:cars,favs:favs});
+						res.redirect('/carSearch/'+result[0].uname);
+					});
 					
 				});
 			}

@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	- var f=1;
+	
 	hr
 	h1
 		.col-sm-12
@@ -58,6 +58,7 @@ block content
 		h1 Search result
 		h5 Showing #{cars.length} results
 		each car in cars
+			- var f=1;
 			.card
 				.col-sm-3
 					img(src=car.imgpath)
@@ -69,8 +70,10 @@ block content
 					-
 						
 						for (var i = 0; i < favs.length; i++) {
-							if(favs[i].mno==car.mno)
+							if(favs[i].mno==car.mno){
 								f =0;
+								break;
+							}
 						}
 					if f
 						.col-sm-3
