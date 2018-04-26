@@ -99,7 +99,7 @@ router.post('/:uname/carSearch' , function(req,res){
 	if(cname!='')
 		s2="name LIKE '"+cname+"' AND";
 	if(color!='')
-		s2="color='"+color+"' AND";
+		s2="color LIKE '"+color+"' AND";
 	var searchQ = "SELECT * FROM cars WHERE "+s1+" "+s2+" "+s3+" engcap BETWEEN ? AND ? AND mileage BETWEEN ? AND ? AND maxsp BETWEEN ? AND ? AND price BETWEEN ? AND ? ORDER BY name";
 	var uq = "SELECT * from users where uname='"+req.params.uname+"' LIMIT 1";
 	con.query(uq , function(err,users){
