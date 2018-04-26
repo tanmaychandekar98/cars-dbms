@@ -9,7 +9,7 @@ block content
 			a.btn.btn-primary(href='/cars/'+user.uname) See your favorite cars
 	hr
 	.row
-		form.form-horizontal.needs-validation.col-sm-12.col-sm-offset-1(method="POST" action="/"+user.uname+"/carSearch")
+		form.needs-validation(method="POST" action="/"+user.uname+"/carSearch")
 			.row
 				.form-group.col-sm-3
 					label Model no. :
@@ -22,35 +22,33 @@ block content
 					input.form-control(name="color" ,type="text", placeholder="Color")
 			.row
 				.form-group.col-sm-3
-					label Engine capacity from :
+					label Engine capacity from : (cc)
 					input.form-control(name="engcap1" ,type="text", value='0')
 				.form-group.col-sm-3
-					label To:
+					label To: (cc)
 					input.form-control(name="engcap2" ,type="text", value='50000')
-			.row
 				.form-group.col-sm-3
-					label Mileage from :
+					label Mileage from : (kmpl)
 					input.form-control(name="mil1" ,type="text", value='0')
 				.form-group.col-sm-3
-					label To :
+					label To : (kmpl)
 					input.form-control(name="mil2" ,type="text", value='150')
 			.row
-				.form-group.col-sm-3.col-sm-offset-1
-					label Maximum speed from :
+				.form-group.col-sm-3
+					label Maximum speed from : (kmph)
 					input.form-control(name="maxsp1" ,type="text", value='0')
 				.form-group.col-sm-3
-					label To :
+					label To : (kmph)
 					input.form-control(name="maxsp2" ,type="text", value='2000')
-			.row
 				.form-group.col-sm-3
-					label Price from :
+					label Price from : (Rs.)
 					input.form-control(name="price1" ,type="text", value='0')
 				.form-group.col-sm-3
-					label To :
+					label To : (Rs.)
 					input.form-control(name="price2" ,type="text", value='300000000')
 			.row
 			br
-			input.btn.btn-success(type="submit" value="Submit")
+			input.btn.btn-success(type="submit" value="Search")
 	br
 	hr
 	if cars
@@ -62,16 +60,17 @@ block content
 			.card
 				.col-sm-3
 					img(src=car.imgpath)
-				.col-sm-2
+				.col-sm-3
 					h2 #{car.name}
-					h3 #{car.mno}
-					h3 Rs.#{car.price}
-				.col-sm-2
-					h3 Color : #{car.color}
-					h3 Mileage : #{car.mileage} kmpl
-					h3 #{car.engcap} CC
-				.col-sm-2
-					h3 #{car.maxsp} kmph Top speed
+					br
+					h4 Model no : #{car.mno}
+					h4 Rs.#{car.price}
+				.col-sm-3
+					br
+					h4 Color : #{car.color}
+					h4 Mileage : #{car.mileage} kmpl
+					h4 #{car.engcap} CC
+					h4 #{car.maxsp} kmph Top speed
 				if favs
 					-
 						

@@ -2,10 +2,15 @@ extends layout
 
 block content
 	#addCar
-		h1=title
+		br
+		.row
+			.col-sm-10
+				h1=title
+			.col-sm-2
+				a.btn.btn-default(href='/adminHome') Go to Home
 		hr
 		.col-sm-8
-			form.form-horizontal.needs-validation(method="POST" action="/addCar")
+			form.needs-validation(method="POST" action="/addCar")
 				input.form-control(name="mno" ,type="text",placeholder="Model no." required)
 				.row
 				input.form-control(name="cname" ,type="text",placeholder="Name of car" required)
@@ -23,6 +28,7 @@ block content
 				input.form-control(name="imgpath" ,type="text",placeholder="Image folder path" required)
 				hr
 				br
-				input.btn.btn-success(type="submit" value="Submit")
+				input.btn.btn-success(type="submit" value="Add Car")
 		.row
-		a.btn.btn-primary.right(href='/adminHome') Go to Home
+		hr
+		

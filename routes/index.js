@@ -85,7 +85,7 @@ router.post('/:uname/carSearch' , function(req,res){
 	var s1='',s2='',s3='';
 	var mno = req.body.mno+'%';
 	var cname = '%'+req.body.cname+'%';
-	var color = req.body.color;
+	var color = '%'+req.body.color+'%';
 	var engcap1 = req.body.engcap1;
 	var engcap2 = req.body.engcap2;
 	var mil1 = req.body.mil1;
@@ -145,7 +145,7 @@ router.post('/addCar',function(req,res){
 	con.query(q ,[mno,cname,color,engcap,mil,maxsp,price,imgpath], function(err,result){
 		if(err) throw err;
 		console.log("Inserted");
-		res.redirect('back');
+		res.send("<h2>1 Car added to database : "+cname+"<hr><a href='/AddCar'>Go back</a></h2>");
 	});
 });
 
