@@ -27,3 +27,7 @@ img {
 	top: 50%;
 	bottom: 50%;
 }
+
+.form-group{
+	margin : 10px 5px;
+}

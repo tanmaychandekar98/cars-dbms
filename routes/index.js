@@ -40,7 +40,7 @@ router.get('/cars/:uname' ,function(req,res){
 	//var q = "SELECT * FROM cars c,favs f, users where f.uname=? and f.mno=c.mno group by f.uname";
 	con.query(q,[req.params.uname], function(err,cars){
 		if(err) res.send(err);
-		res.render('SeeFavorites', { title: 'Your favorites' ,cars:cars});
+		res.render('SeeFavorites', { title: 'Your favorites' ,cars:cars,user:{"uname":req.params.uname}});
 	});
 });
 
@@ -84,7 +84,7 @@ router.get('/carSearch/:uname', function(req,res){
 router.post('/:uname/carSearch' , function(req,res){
 	var s1='',s2='',s3='';
 	var mno = req.body.mno+'%';
-	var cname = req.body.cname+'%';
+	var cname = '%'+req.body.cname+'%';
 	var color = req.body.color;
 	var engcap1 = req.body.engcap1;
 	var engcap2 = req.body.engcap2;
@@ -206,6 +206,16 @@ router.post('/:uname/:mno/delFromFavs' , function(req,res){
 		console.log(result.affectedRows+" row deleted");
 		//res.send("Deleted from favs :"+req.params.mno);
 		res.send("<h2>DELETED from favourites : Model no. "+req.params.mno+"<hr><a href='/carSearch/"+req.params.uname+"'>Go back</a></h2>");
+	});
+});
+
+router.post('/:uname/:mno/delFromSeeFavs' , function(req,res){
+	var q = "DELETE FROM favs WHERE uname='"+req.params.uname+"' AND mno='"+req.params.mno+"'";
+	con.query(q , function (err,result){
+		if(err) throw err;
+		console.log(result.affectedRows+" row deleted");
+		//res.send("Deleted from favs :"+req.params.mno);
+		res.send("<h2>DELETED from favourites : Model no. "+req.params.mno+"<hr><a href='/cars/"+req.params.uname+"'>Go back</a></h2>");
 	});
 });
  

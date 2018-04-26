@@ -7,47 +7,46 @@ block content
 		.col-sm-12
 			a.btn.btn-primary.right(href='/cars/'+user.uname) See your favorite cars
 		br
-	h2 Enter your choices		
+	h2 Enter your choices
 	form.form-horizontal.needs-validation(method="POST" action="/"+user.uname+"/carSearch")
-		.form-group.col-sm-4
-			label Model no. :
-			input.form-control(name="mno" ,type="text", placeholder="Model no.")
 		.row
-		.form-group.col-sm-4
-			label Car name :
-			input.form-control(name="cname" ,type="text", placeholder="Car name")
+			.form-group.col-sm-3
+				label Model no. :
+				input.form-control(name="mno" ,type="text", placeholder="Model no.")
+			.form-group.col-sm-3
+				label Car name :
+				input.form-control(name="cname" ,type="text", placeholder="Car name")
+			.form-group.col-sm-3
+				label Car color :
+				input.form-control(name="color" ,type="text", placeholder="Color")
 		.row
-		.form-group.col-sm-4
-			label Car color :
-			input.form-control(name="color" ,type="text", placeholder="Color")
+			.form-group.col-sm-3
+				label Engine capacity from :
+				input.form-control(name="engcap1" ,type="text", value='0')
+			.form-group.col-sm-3
+				label To:
+				input.form-control(name="engcap2" ,type="text", value='50000')
 		.row
-		.form-group.col-sm-4
-			label Engine capacity from :
-			input.form-control(name="engcap1" ,type="text", value='0')
-		.form-group.col-sm-4
-			label To:
-			input.form-control(name="engcap2" ,type="text", value='50000')
+			.form-group.col-sm-3
+				label Mileage from :
+				input.form-control(name="mil1" ,type="text", value='0')
+			.form-group.col-sm-3
+				label To :
+				input.form-control(name="mil2" ,type="text", value='150')
 		.row
-		.form-group.col-sm-4
-			label Mileage from :
-			input.form-control(name="mil1" ,type="text", value='0')
-		.form-group.col-sm-4
-			label To :
-			input.form-control(name="mil2" ,type="text", value='150')
+			.form-group.col-sm-3.col-sm-offset-1
+				label Maximum speed from :
+				input.form-control(name="maxsp1" ,type="text", value='0')
+			.form-group.col-sm-3
+				label To :
+				input.form-control(name="maxsp2" ,type="text", value='2000')
 		.row
-		.form-group.col-sm-4
-			label Maximum speed from :
-			input.form-control(name="maxsp1" ,type="text", value='0')
-		.form-group.col-sm-4
-			label To :
-			input.form-control(name="maxsp2" ,type="text", value='2000')
-		.row
-		.form-group.col-sm-4
-			label Price from :
-			input.form-control(name="price1" ,type="text", value='0')
-		.form-group.col-sm-4
-			label To :
-			input.form-control(name="price2" ,type="text", value='400000000')
+			.form-group.col-sm-3
+				label Price from :
+				input.form-control(name="price1" ,type="text", value='0')
+			.form-group.col-sm-3
+				label To :
+				input.form-control(name="price2" ,type="text", value='300000000')
 		.row
 		br
 		input.btn.btn-success(type="submit" value="Submit")
@@ -65,7 +64,7 @@ block content
 				.col-sm-6
 					h2 #{car.name}
 					h3 #{car.mno}
-					h4 Rs.#{car.price}
+					h3 Rs.#{car.price}
 				if favs
 					-
 						

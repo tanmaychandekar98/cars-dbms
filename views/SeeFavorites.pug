@@ -11,3 +11,6 @@ block content
 					h2 Model no. : #{car.mno}
 					h2 Rs. #{car.price}
 					br
+				.col-sm-3
+					form.middle(method="POST" action="/"+user.uname+"/"+car.mno+"/delFromSeeFavs")
+								input.btn.btn-warning(type="submit" value="Delete from favourites")
